@@ -1,0 +1,14 @@
+reset;
+model PR2.mod;
+data PR2.dat;
+
+option solver cplex;
+
+solve;
+show>PR2.txt;
+display cost>PR2.txt;
+display Y>PR2.txt;
+display X>PR2.txt;
+display _total_solve_time>PR2.txt;
+expand>PR2.txt;
+close PR2.txt;

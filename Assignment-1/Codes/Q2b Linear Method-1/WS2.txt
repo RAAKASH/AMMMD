@@ -1,0 +1,50 @@
+
+parameters:   N_Consec   N_days   Req
+
+set:   WEEK
+
+variables:   X   excess   short
+
+constraint:   Daily_roll
+
+objective:   Total_Deviations
+_total_solve_time = 0.109375
+
+Total_Deviations = 7
+
+X [*] :=
+1  6
+2  5
+3  1
+4  7
+5  0
+6  3
+7  0
+;
+
+minimize Total_Deviations:
+	short[1] + short[2] + short[3] + short[4] + short[5] + short[6] + 
+	short[7] + excess[1] + excess[2] + excess[3] + excess[4] + excess[5] + 
+	excess[6] + excess[7];
+
+subject to Daily_roll[1]:
+	X[1] + X[4] + X[5] + X[6] + X[7] + short[1] - excess[1] = 17;
+
+subject to Daily_roll[2]:
+	X[1] + X[2] + X[5] + X[6] + X[7] + short[2] - excess[2] = 13;
+
+subject to Daily_roll[3]:
+	X[1] + X[2] + X[3] + X[6] + X[7] + short[3] - excess[3] = 15;
+
+subject to Daily_roll[4]:
+	X[1] + X[2] + X[3] + X[4] + X[7] + short[4] - excess[4] = 19;
+
+subject to Daily_roll[5]:
+	X[1] + X[2] + X[3] + X[4] + X[5] + short[5] - excess[5] = 14;
+
+subject to Daily_roll[6]:
+	X[2] + X[3] + X[4] + X[5] + X[6] + short[6] - excess[6] = 16;
+
+subject to Daily_roll[7]:
+	X[3] + X[4] + X[5] + X[6] + X[7] + short[7] - excess[7] = 11;
+

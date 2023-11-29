@@ -1,0 +1,24 @@
+param N:= 8; # Number of Cities
+
+param p:= 3; #number of FC's planned to be opened
+
+param travel_cost:  #cost of travelling from city f to city c
+	1	2	3	4	5	6	7	8:=
+1	0	9	10	12	14	15	14	16
+2	9	0	11	10	14	12	18	15
+3	10	11	0	8	8	9	11	13
+4	12	10	8	0	9	8	11	10
+5	14	14	8	9	0	8	8	10
+6	15	12	9	8	8	0	9	8
+7	14	18	11	11	8	9	0	8
+8	16	15	13	10	10	8	8	0;
+
+param demand:=  #demand at city c
+1	40
+2	30
+3	35
+4	20
+5	15
+6	50
+7	45
+8	60;

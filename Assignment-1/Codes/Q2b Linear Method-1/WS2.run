@@ -1,0 +1,12 @@
+reset;
+model WS2.mod;
+data WS.dat;
+option solver cplex;
+#option solver minos;
+show>WS2.txt;
+solve;
+display _total_solve_time>WS2.txt;
+display Total_Deviations>WS2.txt;
+display X>WS2.txt;
+expand>WS2.txt;
+close WS2.txt;

@@ -1,0 +1,13 @@
+reset;
+model WS.mod;
+data WS.dat;
+#option solver cplex;
+#option solver baron;
+option solver minos;
+show>WS.txt;
+solve;
+display _total_solve_time>WS.txt;
+display Total_Deviations>WS.txt;
+display X>WS.txt;
+expand>WS.txt;
+close WS.txt;

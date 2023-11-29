@@ -1,0 +1,16 @@
+# Code for Q2a(i)
+
+param n_days:=7;
+
+param n_consecutive:=5;
+
+param requirement:=
+1	17
+2	13
+3	15
+4	19
+5	14
+6	16
+7	11;
+
+

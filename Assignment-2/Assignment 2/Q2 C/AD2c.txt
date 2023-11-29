@@ -1,0 +1,234 @@
+
+parameters:   D_NDD   Distance   M   Market   N_FC   N_cities
+
+set:   CITIES
+
+variables:   D   X
+
+constraints:   Dist   Num_FC
+
+objective:   max_dist
+max_dist = 53
+
+X [*] :=
+1  0
+2  0
+3  0
+4  0
+5  1
+6  0
+7  1
+8  1
+;
+
+D [*] :=
+1  14
+2  14
+3   8
+4   9
+5   0
+6   8
+7   0
+8   0
+;
+
+_total_solve_time = 0.109375
+
+maximize max_dist:
+	D[1] + D[2] + D[3] + D[4] + D[5] + D[6] + D[7] + D[8];
+
+subject to Num_FC:
+	X[1] + X[2] + X[3] + X[4] + X[5] + X[6] + X[7] + X[8] = 3;
+
+subject to Dist[1,1]:
+	18*X[1] + D[1] <= 18;
+
+subject to Dist[1,2]:
+	9*X[2] + D[1] <= 18;
+
+subject to Dist[1,3]:
+	8*X[3] + D[1] <= 18;
+
+subject to Dist[1,4]:
+	6*X[4] + D[1] <= 18;
+
+subject to Dist[1,5]:
+	4*X[5] + D[1] <= 18;
+
+subject to Dist[1,6]:
+	3*X[6] + D[1] <= 18;
+
+subject to Dist[1,7]:
+	4*X[7] + D[1] <= 18;
+
+subject to Dist[1,8]:
+	2*X[8] + D[1] <= 18;
+
+subject to Dist[2,1]:
+	9*X[1] + D[2] <= 18;
+
+subject to Dist[2,2]:
+	18*X[2] + D[2] <= 18;
+
+subject to Dist[2,3]:
+	7*X[3] + D[2] <= 18;
+
+subject to Dist[2,4]:
+	8*X[4] + D[2] <= 18;
+
+subject to Dist[2,5]:
+	4*X[5] + D[2] <= 18;
+
+subject to Dist[2,6]:
+	6*X[6] + D[2] <= 18;
+
+subject to Dist[2,7]:
+	D[2] <= 18;
+
+subject to Dist[2,8]:
+	3*X[8] + D[2] <= 18;
+
+subject to Dist[3,1]:
+	8*X[1] + D[3] <= 18;
+
+subject to Dist[3,2]:
+	7*X[2] + D[3] <= 18;
+
+subject to Dist[3,3]:
+	18*X[3] + D[3] <= 18;
+
+subject to Dist[3,4]:
+	10*X[4] + D[3] <= 18;
+
+subject to Dist[3,5]:
+	10*X[5] + D[3] <= 18;
+
+subject to Dist[3,6]:
+	9*X[6] + D[3] <= 18;
+
+subject to Dist[3,7]:
+	7*X[7] + D[3] <= 18;
+
+subject to Dist[3,8]:
+	5*X[8] + D[3] <= 18;
+
+subject to Dist[4,1]:
+	6*X[1] + D[4] <= 18;
+
+subject to Dist[4,2]:
+	8*X[2] + D[4] <= 18;
+
+subject to Dist[4,3]:
+	10*X[3] + D[4] <= 18;
+
+subject to Dist[4,4]:
+	18*X[4] + D[4] <= 18;
+
+subject to Dist[4,5]:
+	9*X[5] + D[4] <= 18;
+
+subject to Dist[4,6]:
+	10*X[6] + D[4] <= 18;
+
+subject to Dist[4,7]:
+	7*X[7] + D[4] <= 18;
+
+subject to Dist[4,8]:
+	8*X[8] + D[4] <= 18;
+
+subject to Dist[5,1]:
+	4*X[1] + D[5] <= 18;
+
+subject to Dist[5,2]:
+	4*X[2] + D[5] <= 18;
+
+subject to Dist[5,3]:
+	10*X[3] + D[5] <= 18;
+
+subject to Dist[5,4]:
+	9*X[4] + D[5] <= 18;
+
+subject to Dist[5,5]:
+	18*X[5] + D[5] <= 18;
+
+subject to Dist[5,6]:
+	10*X[6] + D[5] <= 18;
+
+subject to Dist[5,7]:
+	10*X[7] + D[5] <= 18;
+
+subject to Dist[5,8]:
+	8*X[8] + D[5] <= 18;
+
+subject to Dist[6,1]:
+	3*X[1] + D[6] <= 18;
+
+subject to Dist[6,2]:
+	6*X[2] + D[6] <= 18;
+
+subject to Dist[6,3]:
+	9*X[3] + D[6] <= 18;
+
+subject to Dist[6,4]:
+	10*X[4] + D[6] <= 18;
+
+subject to Dist[6,5]:
+	10*X[5] + D[6] <= 18;
+
+subject to Dist[6,6]:
+	18*X[6] + D[6] <= 18;
+
+subject to Dist[6,7]:
+	9*X[7] + D[6] <= 18;
+
+subject to Dist[6,8]:
+	10*X[8] + D[6] <= 18;
+
+subject to Dist[7,1]:
+	4*X[1] + D[7] <= 18;
+
+subject to Dist[7,2]:
+	D[7] <= 18;
+
+subject to Dist[7,3]:
+	7*X[3] + D[7] <= 18;
+
+subject to Dist[7,4]:
+	7*X[4] + D[7] <= 18;
+
+subject to Dist[7,5]:
+	10*X[5] + D[7] <= 18;
+
+subject to Dist[7,6]:
+	9*X[6] + D[7] <= 18;
+
+subject to Dist[7,7]:
+	18*X[7] + D[7] <= 18;
+
+subject to Dist[7,8]:
+	10*X[8] + D[7] <= 18;
+
+subject to Dist[8,1]:
+	2*X[1] + D[8] <= 18;
+
+subject to Dist[8,2]:
+	3*X[2] + D[8] <= 18;
+
+subject to Dist[8,3]:
+	5*X[3] + D[8] <= 18;
+
+subject to Dist[8,4]:
+	8*X[4] + D[8] <= 18;
+
+subject to Dist[8,5]:
+	8*X[5] + D[8] <= 18;
+
+subject to Dist[8,6]:
+	10*X[6] + D[8] <= 18;
+
+subject to Dist[8,7]:
+	10*X[7] + D[8] <= 18;
+
+subject to Dist[8,8]:
+	18*X[8] + D[8] <= 18;
+

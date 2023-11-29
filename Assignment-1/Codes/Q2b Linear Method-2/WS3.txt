@@ -1,0 +1,59 @@
+_total_solve_time = 0.140625
+
+Total_Deviations = 7
+
+X [*] :=
+1  5
+2  6
+3  0
+4  7
+5  0
+6  3
+7  1
+;
+
+minimize Total_Deviations:
+	Dev[1] + Dev[2] + Dev[3] + Dev[4] + Dev[5] + Dev[6] + Dev[7];
+
+subject to Daily_roll1[1]:
+	X[1] + X[4] + X[5] + X[6] + X[7] - Dev[1] <= 17;
+
+subject to Daily_roll1[2]:
+	X[1] + X[2] + X[5] + X[6] + X[7] - Dev[2] <= 13;
+
+subject to Daily_roll1[3]:
+	X[1] + X[2] + X[3] + X[6] + X[7] - Dev[3] <= 15;
+
+subject to Daily_roll1[4]:
+	X[1] + X[2] + X[3] + X[4] + X[7] - Dev[4] <= 19;
+
+subject to Daily_roll1[5]:
+	X[1] + X[2] + X[3] + X[4] + X[5] - Dev[5] <= 14;
+
+subject to Daily_roll1[6]:
+	X[2] + X[3] + X[4] + X[5] + X[6] - Dev[6] <= 16;
+
+subject to Daily_roll1[7]:
+	X[3] + X[4] + X[5] + X[6] + X[7] - Dev[7] <= 11;
+
+subject to Daily_roll2[1]:
+	-X[1] - X[4] - X[5] - X[6] - X[7] - Dev[1] <= -17;
+
+subject to Daily_roll2[2]:
+	-X[1] - X[2] - X[5] - X[6] - X[7] - Dev[2] <= -13;
+
+subject to Daily_roll2[3]:
+	-X[1] - X[2] - X[3] - X[6] - X[7] - Dev[3] <= -15;
+
+subject to Daily_roll2[4]:
+	-X[1] - X[2] - X[3] - X[4] - X[7] - Dev[4] <= -19;
+
+subject to Daily_roll2[5]:
+	-X[1] - X[2] - X[3] - X[4] - X[5] - Dev[5] <= -14;
+
+subject to Daily_roll2[6]:
+	-X[2] - X[3] - X[4] - X[5] - X[6] - Dev[6] <= -16;
+
+subject to Daily_roll2[7]:
+	-X[3] - X[4] - X[5] - X[6] - X[7] - Dev[7] <= -11;
+

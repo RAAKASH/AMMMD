@@ -1,0 +1,20 @@
+# Code for Q2a(ii)
+
+reset;
+
+model Q2a(ii).mod;
+data Q2a(ii).dat;
+
+option solver minos;
+
+show>Q2a(ii).txt;
+
+solve;
+
+display _total_solve_time>Q2a(ii).txt;
+display slack>Q2a(ii).txt;
+display{i in day} X[i] > Q2a(ii).txt;
+
+expand>Q2a(ii).txt;
+
+close Q2a(ii).txt;

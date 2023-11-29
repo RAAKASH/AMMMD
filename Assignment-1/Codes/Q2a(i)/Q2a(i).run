@@ -1,0 +1,20 @@
+# Code for Q2a(i)
+
+reset;
+
+model Q2a(i).mod;
+data Q2a(i).dat;
+
+option solver cplex;
+
+show>Q2a(i).txt;
+
+solve;
+
+display _total_solve_time>Q2a(i).txt;
+
+display slack>Q2a(i).txt;
+
+expand>Q2a(i).txt;
+
+close Q2a(i).txt;

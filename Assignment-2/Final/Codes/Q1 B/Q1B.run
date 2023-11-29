@@ -1,0 +1,27 @@
+reset;#Forget any previous model in the meomry
+#reset option;#reset all optopns to their default values
+
+model Q1B.mod;
+data Q1B.dat;
+
+#option solver cplexamp;#if both AMPL Cplex as well as IBM Cplex are installed on your computer
+option solver cplex;#if you use only Cplex with AMPL
+#option prompt1 'ampl: ';#To get back the default prompt after restting options
+
+#option presolve 0;#To Turn off solver presolve (Useful later with Integer variables)
+option show_stats 1;#To display solver statiscs (Useful later with Integer variables)
+option cplex_options 'mipdisplay=4 mipinterval=2';#How to display solver statistics(Useful later with Integer variables)
+#option cplex_options 'sensitivity primalopt'; 
+solve;
+option display1_col 0;# to force the display to a compact form
+#option display1_col 20;#Maximum elements for a table to be displayed in list format(Default 20)
+option omit_zero_cols 0; #If not 0, omit all-zero columns from displays (Default 0)
+show >Q1B.txt;#Display the names of sets, parameters, variables, constraints, and objective function used in the model
+#display _PARS, _VARS >BlueSky_A.txt;
+
+display total_travel_cost>Q1B.txt;
+display X>Q1B.txt;
+display Y>Q1B.txt;
+display _total_solve_time >Q1B.txt;#Display CPU time to solve
+expand >Q1B.txt;#Display the expanded model */ 
+close Q1B.txt;

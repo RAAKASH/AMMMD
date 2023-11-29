@@ -1,0 +1,23 @@
+reset;
+model MC.mod;
+data MC.dat;
+
+#option solver cplexamp;#if both AMPL Cplex as well as IBM Cplex are installed on your computer
+option solver cplex;#if you use only Cplex with AMPL
+#option prompt1 'ampl: ';#To get back the default prompt after restting options
+
+#option presolve 0;#To Turn off solver presolve (Useful later with Integer variables)
+option show_stats 1;#To display solver statiscs (Useful later with Integer variables)
+option cplex_options 'mipdisplay=4 mipinterval=2';#How to display solver statistics(Useful later with Integer variables)
+#option cplex_options 'sensitivity primalopt'; 
+solve;
+
+show>MC.txt;
+display Tourlength>MC.txt;
+display x>MC.txt;
+display time_stay>MC.txt;
+display expense>MC.txt;
+display total_stay>MC.txt;
+display rank>MC.txt;
+expand>MC.txt;
+close MC.txt;

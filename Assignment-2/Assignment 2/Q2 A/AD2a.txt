@@ -1,0 +1,491 @@
+
+parameters:   D_NDD   Distance   Market   N_FC   N_cities
+
+set:   CITIES
+
+variables:   Dmax   X   Y
+
+constraints:   Cover_all   Dmax_cont   Num_FC   X_Y_rel   X_Y_rel_2
+
+objective:   max_dist
+max_dist = 9
+
+X [*] :=
+1  1
+2  0
+3  0
+4  0
+5  1
+6  0
+7  0
+8  1
+;
+
+Y [*,*]
+:   1   2   3   4   5   6   7   8    :=
+1   1   0   0   0   0   0   0   0
+2   1   0   0   0   0   0   0   0
+3   0   0   0   0   1   0   0   0
+4   0   0   0   0   1   0   0   0
+5   0   0   0   0   1   0   0   0
+6   0   0   0   0   1   0   0   0
+7   0   0   0   0   1   0   0   0
+8   0   0   0   0   0   0   0   1
+;
+
+_total_solve_time = 0.21875
+
+minimize max_dist:
+	Dmax;
+
+subject to Num_FC:
+	X[1] + X[2] + X[3] + X[4] + X[5] + X[6] + X[7] + X[8] = 3;
+
+subject to X_Y_rel[1,1]:
+	-X[1] + Y[1,1] <= 0;
+
+subject to X_Y_rel[1,2]:
+	-X[1] + Y[2,1] <= 0;
+
+subject to X_Y_rel[1,3]:
+	-X[1] + Y[3,1] <= 0;
+
+subject to X_Y_rel[1,4]:
+	-X[1] + Y[4,1] <= 0;
+
+subject to X_Y_rel[1,5]:
+	-X[1] + Y[5,1] <= 0;
+
+subject to X_Y_rel[1,6]:
+	-X[1] + Y[6,1] <= 0;
+
+subject to X_Y_rel[1,7]:
+	-X[1] + Y[7,1] <= 0;
+
+subject to X_Y_rel[1,8]:
+	-X[1] + Y[8,1] <= 0;
+
+subject to X_Y_rel[2,1]:
+	-X[2] + Y[1,2] <= 0;
+
+subject to X_Y_rel[2,2]:
+	-X[2] + Y[2,2] <= 0;
+
+subject to X_Y_rel[2,3]:
+	-X[2] + Y[3,2] <= 0;
+
+subject to X_Y_rel[2,4]:
+	-X[2] + Y[4,2] <= 0;
+
+subject to X_Y_rel[2,5]:
+	-X[2] + Y[5,2] <= 0;
+
+subject to X_Y_rel[2,6]:
+	-X[2] + Y[6,2] <= 0;
+
+subject to X_Y_rel[2,7]:
+	-X[2] + Y[7,2] <= 0;
+
+subject to X_Y_rel[2,8]:
+	-X[2] + Y[8,2] <= 0;
+
+subject to X_Y_rel[3,1]:
+	-X[3] + Y[1,3] <= 0;
+
+subject to X_Y_rel[3,2]:
+	-X[3] + Y[2,3] <= 0;
+
+subject to X_Y_rel[3,3]:
+	-X[3] + Y[3,3] <= 0;
+
+subject to X_Y_rel[3,4]:
+	-X[3] + Y[4,3] <= 0;
+
+subject to X_Y_rel[3,5]:
+	-X[3] + Y[5,3] <= 0;
+
+subject to X_Y_rel[3,6]:
+	-X[3] + Y[6,3] <= 0;
+
+subject to X_Y_rel[3,7]:
+	-X[3] + Y[7,3] <= 0;
+
+subject to X_Y_rel[3,8]:
+	-X[3] + Y[8,3] <= 0;
+
+subject to X_Y_rel[4,1]:
+	-X[4] + Y[1,4] <= 0;
+
+subject to X_Y_rel[4,2]:
+	-X[4] + Y[2,4] <= 0;
+
+subject to X_Y_rel[4,3]:
+	-X[4] + Y[3,4] <= 0;
+
+subject to X_Y_rel[4,4]:
+	-X[4] + Y[4,4] <= 0;
+
+subject to X_Y_rel[4,5]:
+	-X[4] + Y[5,4] <= 0;
+
+subject to X_Y_rel[4,6]:
+	-X[4] + Y[6,4] <= 0;
+
+subject to X_Y_rel[4,7]:
+	-X[4] + Y[7,4] <= 0;
+
+subject to X_Y_rel[4,8]:
+	-X[4] + Y[8,4] <= 0;
+
+subject to X_Y_rel[5,1]:
+	-X[5] + Y[1,5] <= 0;
+
+subject to X_Y_rel[5,2]:
+	-X[5] + Y[2,5] <= 0;
+
+subject to X_Y_rel[5,3]:
+	-X[5] + Y[3,5] <= 0;
+
+subject to X_Y_rel[5,4]:
+	-X[5] + Y[4,5] <= 0;
+
+subject to X_Y_rel[5,5]:
+	-X[5] + Y[5,5] <= 0;
+
+subject to X_Y_rel[5,6]:
+	-X[5] + Y[6,5] <= 0;
+
+subject to X_Y_rel[5,7]:
+	-X[5] + Y[7,5] <= 0;
+
+subject to X_Y_rel[5,8]:
+	-X[5] + Y[8,5] <= 0;
+
+subject to X_Y_rel[6,1]:
+	-X[6] + Y[1,6] <= 0;
+
+subject to X_Y_rel[6,2]:
+	-X[6] + Y[2,6] <= 0;
+
+subject to X_Y_rel[6,3]:
+	-X[6] + Y[3,6] <= 0;
+
+subject to X_Y_rel[6,4]:
+	-X[6] + Y[4,6] <= 0;
+
+subject to X_Y_rel[6,5]:
+	-X[6] + Y[5,6] <= 0;
+
+subject to X_Y_rel[6,6]:
+	-X[6] + Y[6,6] <= 0;
+
+subject to X_Y_rel[6,7]:
+	-X[6] + Y[7,6] <= 0;
+
+subject to X_Y_rel[6,8]:
+	-X[6] + Y[8,6] <= 0;
+
+subject to X_Y_rel[7,1]:
+	-X[7] + Y[1,7] <= 0;
+
+subject to X_Y_rel[7,2]:
+	-X[7] + Y[2,7] <= 0;
+
+subject to X_Y_rel[7,3]:
+	-X[7] + Y[3,7] <= 0;
+
+subject to X_Y_rel[7,4]:
+	-X[7] + Y[4,7] <= 0;
+
+subject to X_Y_rel[7,5]:
+	-X[7] + Y[5,7] <= 0;
+
+subject to X_Y_rel[7,6]:
+	-X[7] + Y[6,7] <= 0;
+
+subject to X_Y_rel[7,7]:
+	-X[7] + Y[7,7] <= 0;
+
+subject to X_Y_rel[7,8]:
+	-X[7] + Y[8,7] <= 0;
+
+subject to X_Y_rel[8,1]:
+	-X[8] + Y[1,8] <= 0;
+
+subject to X_Y_rel[8,2]:
+	-X[8] + Y[2,8] <= 0;
+
+subject to X_Y_rel[8,3]:
+	-X[8] + Y[3,8] <= 0;
+
+subject to X_Y_rel[8,4]:
+	-X[8] + Y[4,8] <= 0;
+
+subject to X_Y_rel[8,5]:
+	-X[8] + Y[5,8] <= 0;
+
+subject to X_Y_rel[8,6]:
+	-X[8] + Y[6,8] <= 0;
+
+subject to X_Y_rel[8,7]:
+	-X[8] + Y[7,8] <= 0;
+
+subject to X_Y_rel[8,8]:
+	-X[8] + Y[8,8] <= 0;
+
+subject to X_Y_rel_2[1]:
+	X[1] - Y[1,1] - Y[2,1] - Y[3,1] - Y[4,1] - Y[5,1] - Y[6,1] - Y[7,1] - 
+	Y[8,1] <= 0;
+
+subject to X_Y_rel_2[2]:
+	X[2] - Y[1,2] - Y[2,2] - Y[3,2] - Y[4,2] - Y[5,2] - Y[6,2] - Y[7,2] - 
+	Y[8,2] <= 0;
+
+subject to X_Y_rel_2[3]:
+	X[3] - Y[1,3] - Y[2,3] - Y[3,3] - Y[4,3] - Y[5,3] - Y[6,3] - Y[7,3] - 
+	Y[8,3] <= 0;
+
+subject to X_Y_rel_2[4]:
+	X[4] - Y[1,4] - Y[2,4] - Y[3,4] - Y[4,4] - Y[5,4] - Y[6,4] - Y[7,4] - 
+	Y[8,4] <= 0;
+
+subject to X_Y_rel_2[5]:
+	X[5] - Y[1,5] - Y[2,5] - Y[3,5] - Y[4,5] - Y[5,5] - Y[6,5] - Y[7,5] - 
+	Y[8,5] <= 0;
+
+subject to X_Y_rel_2[6]:
+	X[6] - Y[1,6] - Y[2,6] - Y[3,6] - Y[4,6] - Y[5,6] - Y[6,6] - Y[7,6] - 
+	Y[8,6] <= 0;
+
+subject to X_Y_rel_2[7]:
+	X[7] - Y[1,7] - Y[2,7] - Y[3,7] - Y[4,7] - Y[5,7] - Y[6,7] - Y[7,7] - 
+	Y[8,7] <= 0;
+
+subject to X_Y_rel_2[8]:
+	X[8] - Y[1,8] - Y[2,8] - Y[3,8] - Y[4,8] - Y[5,8] - Y[6,8] - Y[7,8] - 
+	Y[8,8] <= 0;
+
+subject to Cover_all[1]:
+	Y[1,1] + Y[1,2] + Y[1,3] + Y[1,4] + Y[1,5] + Y[1,6] + Y[1,7] + Y[1,8]
+	 = 1;
+
+subject to Cover_all[2]:
+	Y[2,1] + Y[2,2] + Y[2,3] + Y[2,4] + Y[2,5] + Y[2,6] + Y[2,7] + Y[2,8]
+	 = 1;
+
+subject to Cover_all[3]:
+	Y[3,1] + Y[3,2] + Y[3,3] + Y[3,4] + Y[3,5] + Y[3,6] + Y[3,7] + Y[3,8]
+	 = 1;
+
+subject to Cover_all[4]:
+	Y[4,1] + Y[4,2] + Y[4,3] + Y[4,4] + Y[4,5] + Y[4,6] + Y[4,7] + Y[4,8]
+	 = 1;
+
+subject to Cover_all[5]:
+	Y[5,1] + Y[5,2] + Y[5,3] + Y[5,4] + Y[5,5] + Y[5,6] + Y[5,7] + Y[5,8]
+	 = 1;
+
+subject to Cover_all[6]:
+	Y[6,1] + Y[6,2] + Y[6,3] + Y[6,4] + Y[6,5] + Y[6,6] + Y[6,7] + Y[6,8]
+	 = 1;
+
+subject to Cover_all[7]:
+	Y[7,1] + Y[7,2] + Y[7,3] + Y[7,4] + Y[7,5] + Y[7,6] + Y[7,7] + Y[7,8]
+	 = 1;
+
+subject to Cover_all[8]:
+	Y[8,1] + Y[8,2] + Y[8,3] + Y[8,4] + Y[8,5] + Y[8,6] + Y[8,7] + Y[8,8]
+	 = 1;
+
+subject to Dmax_cont[1,1]:
+	Dmax >= 0;
+
+subject to Dmax_cont[1,2]:
+	-9*Y[1,2] + Dmax >= 0;
+
+subject to Dmax_cont[1,3]:
+	-10*Y[1,3] + Dmax >= 0;
+
+subject to Dmax_cont[1,4]:
+	-12*Y[1,4] + Dmax >= 0;
+
+subject to Dmax_cont[1,5]:
+	-14*Y[1,5] + Dmax >= 0;
+
+subject to Dmax_cont[1,6]:
+	-15*Y[1,6] + Dmax >= 0;
+
+subject to Dmax_cont[1,7]:
+	-14*Y[1,7] + Dmax >= 0;
+
+subject to Dmax_cont[1,8]:
+	-16*Y[1,8] + Dmax >= 0;
+
+subject to Dmax_cont[2,1]:
+	-9*Y[2,1] + Dmax >= 0;
+
+subject to Dmax_cont[2,2]:
+	Dmax >= 0;
+
+subject to Dmax_cont[2,3]:
+	-11*Y[2,3] + Dmax >= 0;
+
+subject to Dmax_cont[2,4]:
+	-10*Y[2,4] + Dmax >= 0;
+
+subject to Dmax_cont[2,5]:
+	-14*Y[2,5] + Dmax >= 0;
+
+subject to Dmax_cont[2,6]:
+	-12*Y[2,6] + Dmax >= 0;
+
+subject to Dmax_cont[2,7]:
+	-18*Y[2,7] + Dmax >= 0;
+
+subject to Dmax_cont[2,8]:
+	-15*Y[2,8] + Dmax >= 0;
+
+subject to Dmax_cont[3,1]:
+	-10*Y[3,1] + Dmax >= 0;
+
+subject to Dmax_cont[3,2]:
+	-11*Y[3,2] + Dmax >= 0;
+
+subject to Dmax_cont[3,3]:
+	Dmax >= 0;
+
+subject to Dmax_cont[3,4]:
+	-8*Y[3,4] + Dmax >= 0;
+
+subject to Dmax_cont[3,5]:
+	-8*Y[3,5] + Dmax >= 0;
+
+subject to Dmax_cont[3,6]:
+	-9*Y[3,6] + Dmax >= 0;
+
+subject to Dmax_cont[3,7]:
+	-11*Y[3,7] + Dmax >= 0;
+
+subject to Dmax_cont[3,8]:
+	-13*Y[3,8] + Dmax >= 0;
+
+subject to Dmax_cont[4,1]:
+	-12*Y[4,1] + Dmax >= 0;
+
+subject to Dmax_cont[4,2]:
+	-10*Y[4,2] + Dmax >= 0;
+
+subject to Dmax_cont[4,3]:
+	-8*Y[4,3] + Dmax >= 0;
+
+subject to Dmax_cont[4,4]:
+	Dmax >= 0;
+
+subject to Dmax_cont[4,5]:
+	-9*Y[4,5] + Dmax >= 0;
+
+subject to Dmax_cont[4,6]:
+	-8*Y[4,6] + Dmax >= 0;
+
+subject to Dmax_cont[4,7]:
+	-11*Y[4,7] + Dmax >= 0;
+
+subject to Dmax_cont[4,8]:
+	-10*Y[4,8] + Dmax >= 0;
+
+subject to Dmax_cont[5,1]:
+	-14*Y[5,1] + Dmax >= 0;
+
+subject to Dmax_cont[5,2]:
+	-14*Y[5,2] + Dmax >= 0;
+
+subject to Dmax_cont[5,3]:
+	-8*Y[5,3] + Dmax >= 0;
+
+subject to Dmax_cont[5,4]:
+	-9*Y[5,4] + Dmax >= 0;
+
+subject to Dmax_cont[5,5]:
+	Dmax >= 0;
+
+subject to Dmax_cont[5,6]:
+	-8*Y[5,6] + Dmax >= 0;
+
+subject to Dmax_cont[5,7]:
+	-8*Y[5,7] + Dmax >= 0;
+
+subject to Dmax_cont[5,8]:
+	-10*Y[5,8] + Dmax >= 0;
+
+subject to Dmax_cont[6,1]:
+	-15*Y[6,1] + Dmax >= 0;
+
+subject to Dmax_cont[6,2]:
+	-12*Y[6,2] + Dmax >= 0;
+
+subject to Dmax_cont[6,3]:
+	-9*Y[6,3] + Dmax >= 0;
+
+subject to Dmax_cont[6,4]:
+	-8*Y[6,4] + Dmax >= 0;
+
+subject to Dmax_cont[6,5]:
+	-8*Y[6,5] + Dmax >= 0;
+
+subject to Dmax_cont[6,6]:
+	Dmax >= 0;
+
+subject to Dmax_cont[6,7]:
+	-9*Y[6,7] + Dmax >= 0;
+
+subject to Dmax_cont[6,8]:
+	-8*Y[6,8] + Dmax >= 0;
+
+subject to Dmax_cont[7,1]:
+	-14*Y[7,1] + Dmax >= 0;
+
+subject to Dmax_cont[7,2]:
+	-18*Y[7,2] + Dmax >= 0;
+
+subject to Dmax_cont[7,3]:
+	-11*Y[7,3] + Dmax >= 0;
+
+subject to Dmax_cont[7,4]:
+	-11*Y[7,4] + Dmax >= 0;
+
+subject to Dmax_cont[7,5]:
+	-8*Y[7,5] + Dmax >= 0;
+
+subject to Dmax_cont[7,6]:
+	-9*Y[7,6] + Dmax >= 0;
+
+subject to Dmax_cont[7,7]:
+	Dmax >= 0;
+
+subject to Dmax_cont[7,8]:
+	-8*Y[7,8] + Dmax >= 0;
+
+subject to Dmax_cont[8,1]:
+	-16*Y[8,1] + Dmax >= 0;
+
+subject to Dmax_cont[8,2]:
+	-15*Y[8,2] + Dmax >= 0;
+
+subject to Dmax_cont[8,3]:
+	-13*Y[8,3] + Dmax >= 0;
+
+subject to Dmax_cont[8,4]:
+	-10*Y[8,4] + Dmax >= 0;
+
+subject to Dmax_cont[8,5]:
+	-10*Y[8,5] + Dmax >= 0;
+
+subject to Dmax_cont[8,6]:
+	-8*Y[8,6] + Dmax >= 0;
+
+subject to Dmax_cont[8,7]:
+	-8*Y[8,7] + Dmax >= 0;
+
+subject to Dmax_cont[8,8]:
+	Dmax >= 0;
+

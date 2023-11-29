@@ -1,0 +1,22 @@
+# Code for Q2a(iii)
+
+reset;
+
+model Q2a(iii).mod;
+data Q2a(iii).dat;
+
+option solver cplex;
+
+show>Q2a(iii).txt;
+
+solve;
+
+display _total_solve_time>Q2a(iii).txt;
+
+display slack>Q2a(iii).txt;
+
+display{i in day} X[i]>Q2a(iii).txt;
+
+expand>Q2a(iii).txt;
+
+close Q2a(iii).txt;

@@ -1,0 +1,49 @@
+
+parameters:   N_Consec   N_days   Req
+
+set:   WEEK
+
+variables:   X   Y
+
+constraint:   Daily_roll
+
+objective:   Total_Deviations
+_total_solve_time = 0.015625
+
+Total_Deviations = 11.6273
+
+X [*] :=
+1  9.65237
+2  0.0250897
+3  3.65237
+4  5.67017
+5  0
+6  1.67746
+7  0
+;
+
+minimize Total_Deviations:
+	abs(Y[1] - 17) + abs(Y[2] - 13) + abs(Y[3] - 15) + abs(Y[4] - 19) + abs
+	(Y[5] - 14) + abs(Y[6] - 16) + abs(Y[7] - 11);
+
+subject to Daily_roll[1]:
+	X[1] + X[4] + X[5] + X[6] + X[7] - Y[1] = 0;
+
+subject to Daily_roll[2]:
+	X[1] + X[2] + X[5] + X[6] + X[7] - Y[2] = 0;
+
+subject to Daily_roll[3]:
+	X[1] + X[2] + X[3] + X[6] + X[7] - Y[3] = 0;
+
+subject to Daily_roll[4]:
+	X[1] + X[2] + X[3] + X[4] + X[7] - Y[4] = 0;
+
+subject to Daily_roll[5]:
+	X[1] + X[2] + X[3] + X[4] + X[5] - Y[5] = 0;
+
+subject to Daily_roll[6]:
+	X[2] + X[3] + X[4] + X[5] + X[6] - Y[6] = 0;
+
+subject to Daily_roll[7]:
+	X[3] + X[4] + X[5] + X[6] + X[7] - Y[7] = 0;
+

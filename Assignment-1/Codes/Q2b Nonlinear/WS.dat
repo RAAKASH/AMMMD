@@ -1,0 +1,10 @@
+param N_days:= 7;
+param N_Consec:= 5;
+param Req:=
+1	17
+2	13
+3	15
+4	19
+5	14
+6	16
+7	11;

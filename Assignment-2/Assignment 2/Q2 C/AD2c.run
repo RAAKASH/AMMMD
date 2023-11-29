@@ -1,0 +1,19 @@
+reset;
+model AD2c.mod;
+data AD2.dat;
+
+option solver cplex;
+
+option show_stats 1;#To display solver statiscs (Useful later with Integer variables)
+option cplex_options 'mipdisplay=4 mipinterval=2';#How to display solver statistics(Useful later with Integer variables
+
+solve;
+show>AD2c.txt;
+display max_dist>AD2c.txt;
+display X>AD2c.txt;
+display D>AD2c.txt;
+display _total_solve_time>AD2c.txt;
+expand>AD2c.txt;
+close AD2c.txt;
+
+
