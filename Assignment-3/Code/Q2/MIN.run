@@ -1,0 +1,23 @@
+reset;
+model MIN.mod;
+data MIN.dat;
+
+option solver cplex;
+
+option show_stats 1;#To display solver statiscs (Useful later with Integer variables)
+option cplex_options 'mipdisplay=4 mipinterval=2';#How to display solver statistics(Useful later with Integer variables
+
+solve;
+show>MIN.txt;
+display Profits > MIN.txt;
+display Mines_Open > MIN.txt;
+display Mines_Use > MIN.txt;
+display Extract > MIN.txt;
+display Revenue > MIN.txt;
+display Cash_Flow > MIN.txt;
+display Cost > MIN.txt;
+display _total_solve_time>MIN.txt;
+expand>MIN.txt;
+close MIN.txt;
+
+

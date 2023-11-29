@@ -1,0 +1,15 @@
+reset;
+model Q1a.mod;
+data Q1a.dat;
+
+option solver cplex;
+
+solve;
+show>Q1a.txt;
+display Tardiness>Q1a.txt;
+display Z>Q1a.txt;
+display C>Q1a.txt;
+display T>Q1a.txt;
+display _total_solve_time>Q1a.txt;
+expand>Q1a.txt;
+close Q1a.txt;

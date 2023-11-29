@@ -1,0 +1,24 @@
+reset;
+model RCC4.mod;
+data RCC4.dat;
+
+option solver cplex;
+
+option show_stats 1;#To display solver statiscs (Useful later with Integer variables)
+option cplex_options 'mipdisplay=4 mipinterval=2';#How to display solver statistics(Useful later with Integer variables
+
+solve;
+show>RCC4.txt;
+display Cost>RCC4.txt;
+display End_start >RCC4.txt;
+display R>RCC4.txt;
+display E>RCC4.txt;
+display S>RCC4.txt;
+display W>RCC4.txt;
+display End_start>RCC4.txt;
+#display S2>RCC4.txt;
+display SL>RCC4.txt;
+display SL_val>RCC4.txt;
+display _total_solve_time>RCC4.txt;
+expand>RCC4.txt;
+close RCC4.txt;

@@ -1,0 +1,565 @@
+
+parameters:
+M             max_use       n_mines       r             royalties
+max_extract   mine_qual     n_years       rev           stip_qual
+
+sets:   Mines   Years
+
+variables:   Cash_Flow   Cost   Extract   Mines_Open   Mines_Use   Revenue
+
+constraints:
+Cash_flow_const         Max_use_const           Quality_extract_const
+Cost_const              Open_preced_const       Revenue_const
+Max_extract_const       Open_use_const          Use_extract_const
+
+objective:   Profits
+Profits = 146.862
+
+Mines_Open :=
+1 1   1
+1 2   1
+1 3   1
+1 4   1
+1 5   1
+2 1   1
+2 2   1
+2 3   1
+2 4   1
+2 5   1
+3 1   1
+3 2   1
+3 3   1
+3 4   1
+3 5   1
+4 1   1
+4 2   1
+4 3   1
+4 4   1
+4 5   0
+;
+
+Mines_Use :=
+1 1   1
+1 2   0
+1 3   1
+1 4   1
+1 5   1
+2 1   0
+2 2   1
+2 3   0
+2 4   1
+2 5   1
+3 1   1
+3 2   1
+3 3   1
+3 4   0
+3 5   1
+4 1   1
+4 2   1
+4 3   0
+4 4   1
+4 5   0
+;
+
+Extract :=
+1 1   2
+1 2   0
+1 3   1.95
+1 4   0.125
+1 5   2
+2 1   0
+2 2   2.5
+2 3   0
+2 4   2.5
+2 5   2.16667
+3 1   1.3
+3 2   1.3
+3 3   1.3
+3 4   0
+3 5   1.3
+4 1   2.45
+4 2   2.2
+4 3   0
+4 4   3
+4 5   0
+;
+
+Revenue [*] :=
+1  57.5
+2  60
+3  32.5
+4  56.25
+5  54.6667
+;
+
+Cash_Flow [*] :=
+1  39.5
+2  42
+3  14.5
+4  38.25
+5  41.6667
+;
+
+Cost [*] :=
+1  18
+2  18
+3  18
+4  18
+5  13
+;
+
+_total_solve_time = 0.375
+
+maximize Profits:
+	Cash_Flow[1] + 0.909091*Cash_Flow[2] + 0.826446*Cash_Flow[3] + 
+	0.751315*Cash_Flow[4] + 0.683013*Cash_Flow[5];
+
+subject to Cash_flow_const[1]:
+	-Revenue[1] + Cost[1] + Cash_Flow[1] = 0;
+
+subject to Cash_flow_const[2]:
+	-Revenue[2] + Cost[2] + Cash_Flow[2] = 0;
+
+subject to Cash_flow_const[3]:
+	-Revenue[3] + Cost[3] + Cash_Flow[3] = 0;
+
+subject to Cash_flow_const[4]:
+	-Revenue[4] + Cost[4] + Cash_Flow[4] = 0;
+
+subject to Cash_flow_const[5]:
+	-Revenue[5] + Cost[5] + Cash_Flow[5] = 0;
+
+subject to Revenue_const[1]:
+	-10*Extract[1,1] - 10*Extract[2,1] - 10*Extract[3,1] - 10*Extract[4,1]
+	 + Revenue[1] = 0;
+
+subject to Revenue_const[2]:
+	-10*Extract[1,2] - 10*Extract[2,2] - 10*Extract[3,2] - 10*Extract[4,2]
+	 + Revenue[2] = 0;
+
+subject to Revenue_const[3]:
+	-10*Extract[1,3] - 10*Extract[2,3] - 10*Extract[3,3] - 10*Extract[4,3]
+	 + Revenue[3] = 0;
+
+subject to Revenue_const[4]:
+	-10*Extract[1,4] - 10*Extract[2,4] - 10*Extract[3,4] - 10*Extract[4,4]
+	 + Revenue[4] = 0;
+
+subject to Revenue_const[5]:
+	-10*Extract[1,5] - 10*Extract[2,5] - 10*Extract[3,5] - 10*Extract[4,5]
+	 + Revenue[5] = 0;
+
+subject to Cost_const[1]:
+	-5*Mines_Open[1,1] - 4*Mines_Open[2,1] - 4*Mines_Open[3,1] - 
+	5*Mines_Open[4,1] + Cost[1] = 0;
+
+subject to Cost_const[2]:
+	-5*Mines_Open[1,2] - 4*Mines_Open[2,2] - 4*Mines_Open[3,2] - 
+	5*Mines_Open[4,2] + Cost[2] = 0;
+
+subject to Cost_const[3]:
+	-5*Mines_Open[1,3] - 4*Mines_Open[2,3] - 4*Mines_Open[3,3] - 
+	5*Mines_Open[4,3] + Cost[3] = 0;
+
+subject to Cost_const[4]:
+	-5*Mines_Open[1,4] - 4*Mines_Open[2,4] - 4*Mines_Open[3,4] - 
+	5*Mines_Open[4,4] + Cost[4] = 0;
+
+subject to Cost_const[5]:
+	-5*Mines_Open[1,5] - 4*Mines_Open[2,5] - 4*Mines_Open[3,5] - 
+	5*Mines_Open[4,5] + Cost[5] = 0;
+
+subject to Open_use_const[1,1]:
+	-Mines_Open[1,1] + Mines_Use[1,1] <= 0;
+
+subject to Open_use_const[1,2]:
+	-Mines_Open[1,2] + Mines_Use[1,2] <= 0;
+
+subject to Open_use_const[1,3]:
+	-Mines_Open[1,3] + Mines_Use[1,3] <= 0;
+
+subject to Open_use_const[1,4]:
+	-Mines_Open[1,4] + Mines_Use[1,4] <= 0;
+
+subject to Open_use_const[1,5]:
+	-Mines_Open[1,5] + Mines_Use[1,5] <= 0;
+
+subject to Open_use_const[2,1]:
+	-Mines_Open[2,1] + Mines_Use[2,1] <= 0;
+
+subject to Open_use_const[2,2]:
+	-Mines_Open[2,2] + Mines_Use[2,2] <= 0;
+
+subject to Open_use_const[2,3]:
+	-Mines_Open[2,3] + Mines_Use[2,3] <= 0;
+
+subject to Open_use_const[2,4]:
+	-Mines_Open[2,4] + Mines_Use[2,4] <= 0;
+
+subject to Open_use_const[2,5]:
+	-Mines_Open[2,5] + Mines_Use[2,5] <= 0;
+
+subject to Open_use_const[3,1]:
+	-Mines_Open[3,1] + Mines_Use[3,1] <= 0;
+
+subject to Open_use_const[3,2]:
+	-Mines_Open[3,2] + Mines_Use[3,2] <= 0;
+
+subject to Open_use_const[3,3]:
+	-Mines_Open[3,3] + Mines_Use[3,3] <= 0;
+
+subject to Open_use_const[3,4]:
+	-Mines_Open[3,4] + Mines_Use[3,4] <= 0;
+
+subject to Open_use_const[3,5]:
+	-Mines_Open[3,5] + Mines_Use[3,5] <= 0;
+
+subject to Open_use_const[4,1]:
+	-Mines_Open[4,1] + Mines_Use[4,1] <= 0;
+
+subject to Open_use_const[4,2]:
+	-Mines_Open[4,2] + Mines_Use[4,2] <= 0;
+
+subject to Open_use_const[4,3]:
+	-Mines_Open[4,3] + Mines_Use[4,3] <= 0;
+
+subject to Open_use_const[4,4]:
+	-Mines_Open[4,4] + Mines_Use[4,4] <= 0;
+
+subject to Open_use_const[4,5]:
+	-Mines_Open[4,5] + Mines_Use[4,5] <= 0;
+
+subject to Open_preced_const[1,1,1]:
+	3*Mines_Open[1,1] - Extract[1,1] >= 0;
+
+subject to Open_preced_const[1,2,1]:
+	3*Mines_Open[1,1] - Extract[1,2] >= 0;
+
+subject to Open_preced_const[1,2,2]:
+	3*Mines_Open[1,2] - Extract[1,2] >= 0;
+
+subject to Open_preced_const[1,3,1]:
+	3*Mines_Open[1,1] - Extract[1,3] >= 0;
+
+subject to Open_preced_const[1,3,2]:
+	3*Mines_Open[1,2] - Extract[1,3] >= 0;
+
+subject to Open_preced_const[1,3,3]:
+	3*Mines_Open[1,3] - Extract[1,3] >= 0;
+
+subject to Open_preced_const[1,4,1]:
+	3*Mines_Open[1,1] - Extract[1,4] >= 0;
+
+subject to Open_preced_const[1,4,2]:
+	3*Mines_Open[1,2] - Extract[1,4] >= 0;
+
+subject to Open_preced_const[1,4,3]:
+	3*Mines_Open[1,3] - Extract[1,4] >= 0;
+
+subject to Open_preced_const[1,4,4]:
+	3*Mines_Open[1,4] - Extract[1,4] >= 0;
+
+subject to Open_preced_const[1,5,1]:
+	3*Mines_Open[1,1] - Extract[1,5] >= 0;
+
+subject to Open_preced_const[1,5,2]:
+	3*Mines_Open[1,2] - Extract[1,5] >= 0;
+
+subject to Open_preced_const[1,5,3]:
+	3*Mines_Open[1,3] - Extract[1,5] >= 0;
+
+subject to Open_preced_const[1,5,4]:
+	3*Mines_Open[1,4] - Extract[1,5] >= 0;
+
+subject to Open_preced_const[1,5,5]:
+	3*Mines_Open[1,5] - Extract[1,5] >= 0;
+
+subject to Open_preced_const[2,1,1]:
+	3*Mines_Open[2,1] - Extract[2,1] >= 0;
+
+subject to Open_preced_const[2,2,1]:
+	3*Mines_Open[2,1] - Extract[2,2] >= 0;
+
+subject to Open_preced_const[2,2,2]:
+	3*Mines_Open[2,2] - Extract[2,2] >= 0;
+
+subject to Open_preced_const[2,3,1]:
+	3*Mines_Open[2,1] - Extract[2,3] >= 0;
+
+subject to Open_preced_const[2,3,2]:
+	3*Mines_Open[2,2] - Extract[2,3] >= 0;
+
+subject to Open_preced_const[2,3,3]:
+	3*Mines_Open[2,3] - Extract[2,3] >= 0;
+
+subject to Open_preced_const[2,4,1]:
+	3*Mines_Open[2,1] - Extract[2,4] >= 0;
+
+subject to Open_preced_const[2,4,2]:
+	3*Mines_Open[2,2] - Extract[2,4] >= 0;
+
+subject to Open_preced_const[2,4,3]:
+	3*Mines_Open[2,3] - Extract[2,4] >= 0;
+
+subject to Open_preced_const[2,4,4]:
+	3*Mines_Open[2,4] - Extract[2,4] >= 0;
+
+subject to Open_preced_const[2,5,1]:
+	3*Mines_Open[2,1] - Extract[2,5] >= 0;
+
+subject to Open_preced_const[2,5,2]:
+	3*Mines_Open[2,2] - Extract[2,5] >= 0;
+
+subject to Open_preced_const[2,5,3]:
+	3*Mines_Open[2,3] - Extract[2,5] >= 0;
+
+subject to Open_preced_const[2,5,4]:
+	3*Mines_Open[2,4] - Extract[2,5] >= 0;
+
+subject to Open_preced_const[2,5,5]:
+	3*Mines_Open[2,5] - Extract[2,5] >= 0;
+
+subject to Open_preced_const[3,1,1]:
+	3*Mines_Open[3,1] - Extract[3,1] >= 0;
+
+subject to Open_preced_const[3,2,1]:
+	3*Mines_Open[3,1] - Extract[3,2] >= 0;
+
+subject to Open_preced_const[3,2,2]:
+	3*Mines_Open[3,2] - Extract[3,2] >= 0;
+
+subject to Open_preced_const[3,3,1]:
+	3*Mines_Open[3,1] - Extract[3,3] >= 0;
+
+subject to Open_preced_const[3,3,2]:
+	3*Mines_Open[3,2] - Extract[3,3] >= 0;
+
+subject to Open_preced_const[3,3,3]:
+	3*Mines_Open[3,3] - Extract[3,3] >= 0;
+
+subject to Open_preced_const[3,4,1]:
+	3*Mines_Open[3,1] - Extract[3,4] >= 0;
+
+subject to Open_preced_const[3,4,2]:
+	3*Mines_Open[3,2] - Extract[3,4] >= 0;
+
+subject to Open_preced_const[3,4,3]:
+	3*Mines_Open[3,3] - Extract[3,4] >= 0;
+
+subject to Open_preced_const[3,4,4]:
+	3*Mines_Open[3,4] - Extract[3,4] >= 0;
+
+subject to Open_preced_const[3,5,1]:
+	3*Mines_Open[3,1] - Extract[3,5] >= 0;
+
+subject to Open_preced_const[3,5,2]:
+	3*Mines_Open[3,2] - Extract[3,5] >= 0;
+
+subject to Open_preced_const[3,5,3]:
+	3*Mines_Open[3,3] - Extract[3,5] >= 0;
+
+subject to Open_preced_const[3,5,4]:
+	3*Mines_Open[3,4] - Extract[3,5] >= 0;
+
+subject to Open_preced_const[3,5,5]:
+	3*Mines_Open[3,5] - Extract[3,5] >= 0;
+
+subject to Open_preced_const[4,1,1]:
+	3*Mines_Open[4,1] - Extract[4,1] >= 0;
+
+subject to Open_preced_const[4,2,1]:
+	3*Mines_Open[4,1] - Extract[4,2] >= 0;
+
+subject to Open_preced_const[4,2,2]:
+	3*Mines_Open[4,2] - Extract[4,2] >= 0;
+
+subject to Open_preced_const[4,3,1]:
+	3*Mines_Open[4,1] - Extract[4,3] >= 0;
+
+subject to Open_preced_const[4,3,2]:
+	3*Mines_Open[4,2] - Extract[4,3] >= 0;
+
+subject to Open_preced_const[4,3,3]:
+	3*Mines_Open[4,3] - Extract[4,3] >= 0;
+
+subject to Open_preced_const[4,4,1]:
+	3*Mines_Open[4,1] - Extract[4,4] >= 0;
+
+subject to Open_preced_const[4,4,2]:
+	3*Mines_Open[4,2] - Extract[4,4] >= 0;
+
+subject to Open_preced_const[4,4,3]:
+	3*Mines_Open[4,3] - Extract[4,4] >= 0;
+
+subject to Open_preced_const[4,4,4]:
+	3*Mines_Open[4,4] - Extract[4,4] >= 0;
+
+subject to Open_preced_const[4,5,1]:
+	3*Mines_Open[4,1] - Extract[4,5] >= 0;
+
+subject to Open_preced_const[4,5,2]:
+	3*Mines_Open[4,2] - Extract[4,5] >= 0;
+
+subject to Open_preced_const[4,5,3]:
+	3*Mines_Open[4,3] - Extract[4,5] >= 0;
+
+subject to Open_preced_const[4,5,4]:
+	3*Mines_Open[4,4] - Extract[4,5] >= 0;
+
+subject to Open_preced_const[4,5,5]:
+	3*Mines_Open[4,5] - Extract[4,5] >= 0;
+
+subject to Use_extract_const[1,1]:
+	3*Mines_Use[1,1] - Extract[1,1] >= 0;
+
+subject to Use_extract_const[1,2]:
+	3*Mines_Use[1,2] - Extract[1,2] >= 0;
+
+subject to Use_extract_const[1,3]:
+	3*Mines_Use[1,3] - Extract[1,3] >= 0;
+
+subject to Use_extract_const[1,4]:
+	3*Mines_Use[1,4] - Extract[1,4] >= 0;
+
+subject to Use_extract_const[1,5]:
+	3*Mines_Use[1,5] - Extract[1,5] >= 0;
+
+subject to Use_extract_const[2,1]:
+	3*Mines_Use[2,1] - Extract[2,1] >= 0;
+
+subject to Use_extract_const[2,2]:
+	3*Mines_Use[2,2] - Extract[2,2] >= 0;
+
+subject to Use_extract_const[2,3]:
+	3*Mines_Use[2,3] - Extract[2,3] >= 0;
+
+subject to Use_extract_const[2,4]:
+	3*Mines_Use[2,4] - Extract[2,4] >= 0;
+
+subject to Use_extract_const[2,5]:
+	3*Mines_Use[2,5] - Extract[2,5] >= 0;
+
+subject to Use_extract_const[3,1]:
+	3*Mines_Use[3,1] - Extract[3,1] >= 0;
+
+subject to Use_extract_const[3,2]:
+	3*Mines_Use[3,2] - Extract[3,2] >= 0;
+
+subject to Use_extract_const[3,3]:
+	3*Mines_Use[3,3] - Extract[3,3] >= 0;
+
+subject to Use_extract_const[3,4]:
+	3*Mines_Use[3,4] - Extract[3,4] >= 0;
+
+subject to Use_extract_const[3,5]:
+	3*Mines_Use[3,5] - Extract[3,5] >= 0;
+
+subject to Use_extract_const[4,1]:
+	3*Mines_Use[4,1] - Extract[4,1] >= 0;
+
+subject to Use_extract_const[4,2]:
+	3*Mines_Use[4,2] - Extract[4,2] >= 0;
+
+subject to Use_extract_const[4,3]:
+	3*Mines_Use[4,3] - Extract[4,3] >= 0;
+
+subject to Use_extract_const[4,4]:
+	3*Mines_Use[4,4] - Extract[4,4] >= 0;
+
+subject to Use_extract_const[4,5]:
+	3*Mines_Use[4,5] - Extract[4,5] >= 0;
+
+subject to Quality_extract_const[1]:
+	0.1*Extract[1,1] - 0.2*Extract[2,1] + 0.6*Extract[3,1] - 
+	0.4*Extract[4,1] = 0;
+
+subject to Quality_extract_const[2]:
+	0.2*Extract[1,2] - 0.1*Extract[2,2] + 0.7*Extract[3,2] - 
+	0.3*Extract[4,2] = 0;
+
+subject to Quality_extract_const[3]:
+	-0.2*Extract[1,3] - 0.5*Extract[2,3] + 0.3*Extract[3,3] - 
+	0.7*Extract[4,3] = 0;
+
+subject to Quality_extract_const[4]:
+	0.4*Extract[1,4] + 0.1*Extract[2,4] + 0.9*Extract[3,4] - 
+	0.1*Extract[4,4] = 0;
+
+subject to Quality_extract_const[5]:
+	-0.3*Extract[2,5] + 0.5*Extract[3,5] - 0.5*Extract[4,5] = 0;
+
+subject to Max_extract_const[1,1]:
+	Extract[1,1] <= 2;
+
+subject to Max_extract_const[1,2]:
+	Extract[1,2] <= 2;
+
+subject to Max_extract_const[1,3]:
+	Extract[1,3] <= 2;
+
+subject to Max_extract_const[1,4]:
+	Extract[1,4] <= 2;
+
+subject to Max_extract_const[1,5]:
+	Extract[1,5] <= 2;
+
+subject to Max_extract_const[2,1]:
+	Extract[2,1] <= 2.5;
+
+subject to Max_extract_const[2,2]:
+	Extract[2,2] <= 2.5;
+
+subject to Max_extract_const[2,3]:
+	Extract[2,3] <= 2.5;
+
+subject to Max_extract_const[2,4]:
+	Extract[2,4] <= 2.5;
+
+subject to Max_extract_const[2,5]:
+	Extract[2,5] <= 2.5;
+
+subject to Max_extract_const[3,1]:
+	Extract[3,1] <= 1.3;
+
+subject to Max_extract_const[3,2]:
+	Extract[3,2] <= 1.3;
+
+subject to Max_extract_const[3,3]:
+	Extract[3,3] <= 1.3;
+
+subject to Max_extract_const[3,4]:
+	Extract[3,4] <= 1.3;
+
+subject to Max_extract_const[3,5]:
+	Extract[3,5] <= 1.3;
+
+subject to Max_extract_const[4,1]:
+	Extract[4,1] <= 3;
+
+subject to Max_extract_const[4,2]:
+	Extract[4,2] <= 3;
+
+subject to Max_extract_const[4,3]:
+	Extract[4,3] <= 3;
+
+subject to Max_extract_const[4,4]:
+	Extract[4,4] <= 3;
+
+subject to Max_extract_const[4,5]:
+	Extract[4,5] <= 3;
+
+subject to Max_use_const[1]:
+	Mines_Use[1,1] + Mines_Use[2,1] + Mines_Use[3,1] + Mines_Use[4,1] <= 3;
+
+subject to Max_use_const[2]:
+	Mines_Use[1,2] + Mines_Use[2,2] + Mines_Use[3,2] + Mines_Use[4,2] <= 3;
+
+subject to Max_use_const[3]:
+	Mines_Use[1,3] + Mines_Use[2,3] + Mines_Use[3,3] + Mines_Use[4,3] <= 3;
+
+subject to Max_use_const[4]:
+	Mines_Use[1,4] + Mines_Use[2,4] + Mines_Use[3,4] + Mines_Use[4,4] <= 3;
+
+subject to Max_use_const[5]:
+	Mines_Use[1,5] + Mines_Use[2,5] + Mines_Use[3,5] + Mines_Use[4,5] <= 3;
+
